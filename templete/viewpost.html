@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}{{item.post_title}}{% endblock %}
+{% block content %}
+<section class="py-3 ">
+    <div class="container">
+        <h1 class="text-center custom-fs-32 custom-fw-400 text-black">{{item.post_title}}</h1>
+        <div class="d-flex justify-content-center my-4">
+            <div class="bg-black text-white px-3 py-2">
+                {{item.category}}
+            </div>
+        </div>
+        <p class="custom-fs-15 text-center text-capitalize">{{item.author}} | {{item.date_added}}</p>
+        <p class="text-center my-4">
+            {{item.post_body}}
+        </p>
+        <div class="d-flex justify-content-center my-3 ">
+            <div class="fb-comments" data-href="http://127.0.0.1:8000/viewpost/{{item.id}}" data-width=""
+                data-numposts="5"></div>
+        </div>
+    </div>
+</section>
+{% endblock %}
