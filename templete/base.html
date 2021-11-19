@@ -14,15 +14,20 @@
 
     <title>World Vision {% block title %}{% endblock %}</title>
     <style>
-       
+        .toast {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            z-index: 1999;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Header Section  -->
 
+    <!-- Header Section  -->
     {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light ">
+    <nav class="navbar navbar-expand-lg navbar-light " id="navbar-sm">
         <div class="container d-flex d-lg-block">
             <div class="row d-none d-lg-flex justify-content-between align-items-center">
                 <div class="col-4">
@@ -133,9 +138,44 @@
     {% endblock %}
 
     <!-- Footer Section  -->
+    <section>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex justify-content-center align-items-center" bis_skin_checked="1">
+                    <a href="{% url 'index' %}" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                        WORLD VISION
+                    </a>
+                    <span class="text-muted">© 2021 Company, Inc</span>
+                </div>
+            </footer>
+        </div>
+    </section>
+
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v12.0"
         nonce="jGKOUW3p"></script>
+    <script>
+
+        const navbarLg = document.querySelector('#navbarSupportedContent')
+        const navbarSm = document.querySelector('#navbar-sm')
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 115) {
+                navbarLg.classList.add('fixed-header')
+                navbarSm.classList.add('fixed-header-sm')
+            }
+            else {
+                navbarLg.classList.remove('fixed-header')
+                navbarSm.classList.remove('fixed-header-sm')
+            }
+        })
+        const toasts = document.querySelectorAll('.toast')
+
+        toasts.forEach(toast => {
+            setInterval(() => {
+                toast.classList.remove('show')
+            }, 5000);
+        })
+    </script>
 </body>
 
 </html>

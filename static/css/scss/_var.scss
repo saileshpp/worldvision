@@ -231,7 +231,7 @@
 
 
 .line-1 {
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box !important;
@@ -239,7 +239,7 @@
     -webkit-box-orient: vertical;
 }
 .line-2 {
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box !important;
@@ -247,7 +247,7 @@
     -webkit-box-orient: vertical;
 }
 .line-3 {
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box !important;

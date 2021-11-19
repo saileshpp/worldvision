@@ -275,7 +275,7 @@
 }
 
 .line-1 {
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
   display: -webkit-box !important;
@@ -284,7 +284,7 @@
 }
 
 .line-2 {
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
   display: -webkit-box !important;
@@ -293,7 +293,7 @@
 }
 
 .line-3 {
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
   display: -webkit-box !important;
@@ -311,7 +311,7 @@ li {
 }
 
 .post-card {
-  height: 400px;
+  height: 450px;
 }
 
 .post-card .card-body {
@@ -347,6 +347,12 @@ li {
   -webkit-box-orient: vertical;
 }
 
+.post-card img {
+  height: 207px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .carousel-inner img {
   height: 250px;
   -o-object-fit: cover;
@@ -357,8 +363,8 @@ li {
 .loader {
   border-radius: 5px;
   background: linear-gradient(110deg, rgba(206, 206, 206, 0.933) 8%, #eeee 18%, rgba(206, 206, 206, 0.933) 33%);
-  -webkit-animation: 1.5s load  linear infinite;
-          animation: 1.5s load  linear infinite;
+  -webkit-animation: 1.5s load linear infinite;
+          animation: 1.5s load linear infinite;
   background-size: 200% 100%;
   min-height: 100px;
 }
@@ -367,6 +373,38 @@ li {
   min-height: 100px;
   background-color: #aeaeae;
   border-radius: 5px;
+}
+
+.profile-img {
+  margin: 10px auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0 6px 5px -4px #dbdbdb;
+          box-shadow: 0 6px 5px -4px #dbdbdb;
+  left: 0;
+}
+
+.fixed-header-sm {
+  position: static;
 }
 
 @-webkit-keyframes load {
@@ -383,6 +421,22 @@ li {
 
 /* responsive xl */
 /* responsive lg */
+@media (max-width: 991px) {
+  .fixed-header {
+    position: static;
+  }
+  .fixed-header-sm {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+    background-color: white;
+    -webkit-box-shadow: 0 6px 5px -4px #dbdbdb;
+            box-shadow: 0 6px 5px -4px #dbdbdb;
+    left: 0;
+  }
+}
+
 /* responsive md */
 /* responsive sm */
 @media (max-width: 575px) {

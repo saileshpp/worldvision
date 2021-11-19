@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 <section>
@@ -18,6 +19,13 @@
   </div>
 </section>
 
+{% if messages %}
+<div class="alert alert-warning alert-dismissible fade show toast" role="alert">
+  News added succesfully
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
 <section class="py-3">
   <div class="container">
     <div class="row">
@@ -35,22 +43,22 @@
             <div class="carousel-item active loader">
               <img src="https://picsum.photos/1200/300" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h5 class="line-1">{{c_news.0.post_title}}</h5>
+                <p class="line-2">{{c_news.0.post_body}}</p>
               </div>
             </div>
             <div class="carousel-item loader">
               <img src="https://picsum.photos/1250/300" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h5 class="line-1">{{c_news.1.post_title}}</h5>
+                <p class="line-2">{{c_news.1.post_body}}.</p>
               </div>
             </div>
             <div class="carousel-item loader">
               <img src="https://picsum.photos/1150/300" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5 class="line-1">{{c_news.2.post_title}}</h5>
+                <p class="line-2">{{c_news.2.post_body}}</p>
               </div>
             </div>
           </div>
@@ -74,7 +82,8 @@
               <p class="text-muted custom-fs-12 mb-1 text-capitalize">
                 {{item.author}}
               </p>
-              <a href="{% url 'viewpost' id=item.id %}" class="text-black custom-fs-14 line-2 custom-fw-500">{{item.post_title}}</a>
+              <a href="{% url 'viewpost' id=item.id %}"
+                class="text-black custom-fs-14 line-2 custom-fw-500">{{item.post_title}}</a>
             </div>
           </div>
           {% endfor %}
@@ -90,18 +99,18 @@
       {% for item in news %}
       <div class="col-md-4 col-sm-6 mb-4">
         <div class="post-card card shadow-sm " bis_skin_checked="1">
-         <div class="loader">
-          {% if item.img is NULL %}
-          <a href="{% url 'viewpost' id=item.id %}">
-            <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
-          </a>
-          {% else %}
-          <a href="{% url 'viewpost' id=item.id %}">
-            <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
-          </a>
-          {% endif %}
-         </div>
-         
+          <div class="loader">
+            {% if item.img is NULL %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% else %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% endif %}
+          </div>
+
           <div class="card-body" bis_skin_checked="1">
             <a href="{% url 'viewpost' id=item.id %}">
               <h2 class="text-start custom-fw-700 text-dark">{{item.post_title}}</h2>
