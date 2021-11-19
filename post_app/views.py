@@ -14,7 +14,11 @@ def index(request):
     news = Post.objects.all()
     b_news = random.sample(list(news),4)
     carousel_news = random.sample(list(news),3)
-    return render(request, 'index.html', {'date': date.today(),'news':news,'b_news':b_news,'aside': news[:4],'c_news':carousel_news})
+    world_news =  Post.objects.filter(category = 'World').order_by('-date_added')[:3]
+    business_news  = Post.objects.filter(category = 'Business').order_by('-date_added')[:3]
+    sports_news = Post.objects.filter(category = 'Sports').order_by('-date_added')[:3]
+    params =  {'date': date.today(),'news':news,'b_news':b_news,'aside': news[:4],'c_news':carousel_news, 'world_news': world_news,'business_news':business_news, 'sports_news':sports_news}
+    return render(request, 'index.html', params)
 
 def signin(request):
     if request.method == 'GET':
@@ -59,7 +63,6 @@ def addpost(request):
 def viewpost(request, id):
     item = Post.objects.get(id=id)
     return render(request, 'viewpost.html',{'item':item})
-
     
 @login_required(login_url='signin')
 def myaccount(request):
@@ -90,3 +93,8 @@ def delete(request, id):
     news = Post.objects.get(id=id)
     news.delete()
     return redirect('mypost')
+
+def catpage(request, slug):
+    news = reversed( Post.objects.filter(category = slug))
+
+    return render(request, 'catpage.html',{'slug':slug, 'news':news})

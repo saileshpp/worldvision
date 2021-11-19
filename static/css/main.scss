@@ -33,7 +33,7 @@ li {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
     }
-    img{
+    img {
         height: 207px;
         object-fit: cover;
     }
@@ -42,6 +42,11 @@ li {
     height: 250px;
     object-fit: cover;
     width: 100%;
+    filter: brightness(50%);
+}
+.mypost-card img {
+    object-fit: cover;
+    height: 100%;
 }
 .loader {
     border-radius: 5px;
@@ -76,6 +81,21 @@ li {
 }
 .fixed-header-sm {
     position: static;
+}
+.post-img {
+    height: 400px;
+    display: grid;
+    place-items: center;
+    img {
+        width:100%;
+        object-fit:cover;
+        height: 400px;
+    }
+}
+.breaking_news img{
+    height: 40px;
+    width: 100%;
+    object-fit: cover;
 }
 
 @keyframes load {
@@ -113,5 +133,4 @@ li {
         object-fit: cover;
         width: 100%;
     }
-    
 }

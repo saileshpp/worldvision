@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}{{slug}}{% endblock %}
+
+{% block content %}
+
+<section class="py-3">
+    <div class="container">
+        <h1 class="text-center custom-fw-600 mb-5">{{slug}}</h1>
+        <div class="row">
+
+            {% if news is None %}
+            <h2 class="text-center custom-fw-500 mb-5">No News Yet</h2>
+            {% else %}
+            {% for item in news %}
+            <div class="col-md-3">
+                <div class="post-card card shadow-sm mb-3  border-0" bis_skin_checked="1">
+                    <div class="loader">
+                        {% if item.img is NULL %}
+                        <a href="{% url 'viewpost' id=item.id %}">
+                            <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+                        </a>
+                        {% else %}
+                        <a href="{% url 'viewpost' id=item.id %}">
+                            <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <div class="card-body" bis_skin_checked="1">
+                        <a href="{% url 'viewpost' id=item.id %}">
+                            <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{item.post_title}}</h2>
+                        </a>
+                        <p class="card-text mb-0">
+                            {{item.post_body}}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                            {% if user.is_authenticated or user.is_superuser %}
+                            <div class="btn-group" bis_skin_checked="1">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            {% endif %}
+                            <small class="text-muted">{{item.date_added}}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+{% endblock %}

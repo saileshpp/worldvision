@@ -11,4 +11,5 @@ urlpatterns = [
     path('myaccount',views.myaccount, name='myaccount'),
     path('changepassword',views.changepassword, name='changepassword'),
     path('mypost',views.mypost, name='mypost'),
+    path('catpage/(?P<slug>[^/]+)$',views.catpage, name='catpage'),
 ]
