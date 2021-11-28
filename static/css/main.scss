@@ -10,6 +10,9 @@ li {
 }
 .post-card {
     height: 450px;
+    .loader {
+        overflow: hidden;
+    }
     .card-body {
         display: flex;
         flex-direction: column;
@@ -36,13 +39,28 @@ li {
     img {
         height: 207px;
         object-fit: cover;
+        transition: 0.4s all ease;
+        vertical-align: middle;
+        &:hover {
+            transform: scale(1.25);
+        }
     }
+}
+.card .loader {
+    overflow: hidden;
+    img {
+        transition: 0.4s all ease;
+        vertical-align: middle;
+    }
+}
+.card .loader img:hover {
+    transform: scale(1.25);
 }
 .carousel-inner img {
     height: 250px;
     object-fit: cover;
     width: 100%;
-    filter: brightness(50%);
+    filter: brightness(80%);
 }
 .mypost-card img {
     object-fit: cover;
@@ -87,15 +105,46 @@ li {
     display: grid;
     place-items: center;
     img {
-        width:100%;
-        object-fit:cover;
+        width: 100%;
+        object-fit: cover;
         height: 400px;
     }
 }
-.breaking_news img{
+.breaking_news img {
     height: 40px;
     width: 100%;
     object-fit: cover;
+}
+.navbar {
+    transition: var(--custom-transition);
+}
+.search-nav {
+    position: relative;
+    .search-input {
+        transition: all 5ms;
+        position: absolute;
+        min-width: 0px;
+        left: 105%;
+        opacity: 0;
+        visibility: hidden;
+    }
+    .active {
+        min-width: 185px;
+        opacity: 1;
+        visibility: visible;
+        transition: all 5ms;
+    }
+}
+.aside-news {
+    min-height: 73px;
+}
+.sidebar {
+    #sidebar {
+        transition: all 0.4s;
+    }
+    .active {
+        background-color: gray !important;
+    }
 }
 
 @keyframes load {
@@ -132,5 +181,13 @@ li {
         height: 150px;
         object-fit: cover;
         width: 100%;
+    }
+    .post-card {
+        height: 400px;
+        img {
+            min-height: 207px;
+            height: 207px;
+            object-fit: cover;
+        }
     }
 }
