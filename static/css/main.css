@@ -275,7 +275,7 @@
 }
 
 .line-1 {
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
   display: -webkit-box !important;
@@ -284,7 +284,7 @@
 }
 
 .line-2 {
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
   display: -webkit-box !important;
@@ -293,12 +293,71 @@
 }
 
 .line-3 {
-  overflow-y: hidden;
+  overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
   display: -webkit-box !important;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+@media (max-width: 575px) {
+  :root {
+    --custom-font-: "Montserrat", sans-serif;
+    --custom-primary: #b21a29;
+    --custom-secondary: #656673;
+    --custom-black: #1f2332;
+    --custom-dark: #2c3040;
+    --custom-white: #fff;
+    --custom-gray: #837f88;
+    --custom-light: #6a6b71;
+    /* Font size from 9 to 39 */
+    --custom-fs-8: 6px;
+    --custom-fs-9: 7px;
+    --custom-fs-10: 8px;
+    --custom-fs-11: 9px;
+    --custom-fs-12: 10px;
+    --custom-fs-13: 11px;
+    --custom-fs-14: 12px;
+    --custom-fs-15: 13px;
+    --custom-fs-16: 14px;
+    --custom-fs-17: 15px;
+    --custom-fs-18: 16px;
+    --custom-fs-19: 17px;
+    --custom-fs-20: 18px;
+    --custom-fs-21: 19px;
+    --custom-fs-22: 20px;
+    --custom-fs-23: 21px;
+    --custom-fs-24: 22px;
+    --custom-fs-25: 23px;
+    --custom-fs-26: 24px;
+    --custom-fs-27: 25px;
+    --custom-fs-28: 26px;
+    --custom-fs-29: 27px;
+    --custom-fs-30: 28px;
+    --custom-fs-31: 29px;
+    --custom-fs-32: 30px;
+    --custom-fs-33: 31px;
+    --custom-fs-34: 32px;
+    --custom-fs-35: 33px;
+    --custom-fs-36: 34px;
+    --custom-fs-37: 35px;
+    --custom-fs-38: 36px;
+    --custom-fs-39: 37px;
+    --custom-fs-47: 30.78px;
+    --custom-fs-57: 35.33px;
+    --custom-fw-100: 100;
+    --custom-fw-200: 200;
+    --custom-fw-300: 300 !important;
+    --custom-fw-400: 400;
+    --custom-fw-500: 500;
+    --custom-fw-600: 600;
+    --custom-fw-700: 700;
+    --custom-fw-800: 800;
+    --custom-fw-900: 900;
+    --custom-transition: all 300ms ease-in-out;
+    --box-shadow: 0px 1px 24px 8px rgba(20, 20, 20, 0.08);
+  }
 }
 
 a {
@@ -311,7 +370,11 @@ li {
 }
 
 .post-card {
-  height: 400px;
+  height: 450px;
+}
+
+.post-card .loader {
+  overflow: hidden;
 }
 
 .post-card .card-body {
@@ -347,18 +410,55 @@ li {
   -webkit-box-orient: vertical;
 }
 
+.post-card img {
+  height: 207px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: 0.4s all ease;
+  transition: 0.4s all ease;
+  vertical-align: middle;
+}
+
+.post-card img:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
+.card .loader {
+  overflow: hidden;
+}
+
+.card .loader img {
+  -webkit-transition: 0.4s all ease;
+  transition: 0.4s all ease;
+  vertical-align: middle;
+}
+
+.card .loader img:hover {
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
+}
+
 .carousel-inner img {
   height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
+  -webkit-filter: brightness(80%);
+          filter: brightness(80%);
+}
+
+.mypost-card img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
 }
 
 .loader {
   border-radius: 5px;
   background: linear-gradient(110deg, rgba(206, 206, 206, 0.933) 8%, #eeee 18%, rgba(206, 206, 206, 0.933) 33%);
-  -webkit-animation: 1.5s load  linear infinite;
-          animation: 1.5s load  linear infinite;
+  -webkit-animation: 1.5s load linear infinite;
+          animation: 1.5s load linear infinite;
   background-size: 200% 100%;
   min-height: 100px;
 }
@@ -367,6 +467,99 @@ li {
   min-height: 100px;
   background-color: #aeaeae;
   border-radius: 5px;
+}
+
+.profile-img {
+  margin: 10px auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  width: 100%;
+  background-color: white;
+  -webkit-box-shadow: 0 6px 5px -4px #dbdbdb;
+          box-shadow: 0 6px 5px -4px #dbdbdb;
+  left: 0;
+}
+
+.fixed-header-sm {
+  position: static;
+}
+
+.post-img {
+  height: 400px;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.post-img img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 400px;
+}
+
+.breaking_news img {
+  height: 40px;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.navbar {
+  -webkit-transition: var(--custom-transition);
+  transition: var(--custom-transition);
+}
+
+.search-nav {
+  position: relative;
+}
+
+.search-nav .search-input {
+  -webkit-transition: all 5ms;
+  transition: all 5ms;
+  position: absolute;
+  min-width: 0px;
+  left: 105%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.search-nav .active {
+  min-width: 185px;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 5ms;
+  transition: all 5ms;
+}
+
+.aside-news {
+  min-height: 73px;
+}
+
+.sidebar #sidebar {
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.sidebar .active {
+  background-color: gray !important;
 }
 
 @-webkit-keyframes load {
@@ -383,6 +576,22 @@ li {
 
 /* responsive xl */
 /* responsive lg */
+@media (max-width: 991px) {
+  .fixed-header {
+    position: static;
+  }
+  .fixed-header-sm {
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+    background-color: white;
+    -webkit-box-shadow: 0 6px 5px -4px #dbdbdb;
+            box-shadow: 0 6px 5px -4px #dbdbdb;
+    left: 0;
+  }
+}
+
 /* responsive md */
 /* responsive sm */
 @media (max-width: 575px) {
@@ -391,6 +600,15 @@ li {
     -o-object-fit: cover;
        object-fit: cover;
     width: 100%;
+  }
+  .post-card {
+    height: 400px;
+  }
+  .post-card img {
+    min-height: 207px;
+    height: 207px;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }
 /*# sourceMappingURL=main.css.map */

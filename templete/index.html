@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 <section>
   <div class="container">
     <div class="row border-bottom mx-0 py-3">
-      <h2 class="d-block d-lg-none text-start text-sm-center py-3 border-top border-bottom">
+      <h2 class="d-block d-lg-none text-start text-sm-center py-3 border-top border-bottom custom-text-primary">
         Breaking News
       </h2>
       {% for news in b_news %}
-      <div class="col-lg-3 col-md-6 text-start text-sm-center my-2">
+      <div class="col-lg-3 col-md-6 breaking_news my-2">
         <a href="{% url 'viewpost' id=news.id %}">
-          <h2 class="custom-fs-16 text-black">{{news.post_title}}</h2>
+          <div class="row">
+
+            <div class="col-4 px-1">
+              <img src="{{news.img.url}}" class="img-fluid" alt="">
+            </div>
+            <div class="col-8 px-1">
+              <h2 class="custom-fs-16 text-black line-2">{{news.post_title}}</h2>
+            </div>
+          </div>
         </a>
       </div>
       {% endfor %}
@@ -18,11 +27,18 @@
   </div>
 </section>
 
+{% if messages %}
+<div class="alert alert-warning alert-dismissible fade show toast" role="alert">
+  News added succesfully
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
 <section class="py-3">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mb-3">
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
               aria-current="true" aria-label="Slide 1"></button>
@@ -33,24 +49,26 @@
           </div>
           <div class="carousel-inner">
             <div class="carousel-item active loader">
-              <img src="https://picsum.photos/1200/300" class="d-block w-100" alt="...">
+              <img src="{{c_news.0.img.url}}" class="d-block w-100 bg-opacity-50" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Some representative placeholder content for the first slide.</p>
+                <h5 class="line-1">{{c_news.0.post_title}}</h5>
+                <p class="line-2">{{c_news.0.post_body}}</p>
               </div>
             </div>
             <div class="carousel-item loader">
-              <img src="https://picsum.photos/1250/300" class="d-block w-100" alt="...">
+              <img src="{{c_news.1.img.url}}" class="d-block w-100 bg-opacity-50" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Some representative placeholder content for the second slide.</p>
+                <h5 class="line-1">{{c_news.1.post_title}}</h5>
+                <p class="line-2">{{c_news.1.post_body}}.</p>
               </div>
             </div>
-            <div class="carousel-item loader">
-              <img src="https://picsum.photos/1150/300" class="d-block w-100" alt="...">
+            <div class="carousel-item loader ">
+              <div class="bg-opacity-50">
+                <img src="{{c_news.2.img.url}}" class="d-block w-100 " alt="...">
+              </div>
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Some representative placeholder content for the third slide.</p>
+                <h5 class="line-1">{{c_news.2.post_title}}</h5>
+                <p class="line-2">{{c_news.2.post_body}}</p>
               </div>
             </div>
           </div>
@@ -70,11 +88,13 @@
         <div class="row">
           {% for item in aside %}
           <div class="col-sm-6 mb-3">
-            <div class="border-bottom py-3">
+            <div class="aside-news border-bottom py-1" >
               <p class="text-muted custom-fs-12 mb-1 text-capitalize">
                 {{item.author}}
+
               </p>
-              <a href="{% url 'viewpost' id=item.id %}" class="text-black custom-fs-14 line-2 custom-fw-500">{{item.post_title}}</a>
+              <a href="{% url 'viewpost' id=item.id %}"
+                class="text-black custom-fs-14 line-2 custom-fw-500">{{item.post_title}}</a>
             </div>
           </div>
           {% endfor %}
@@ -87,36 +107,207 @@
 <section class="py-3">
   <div class="container">
     <div class="row">
-      {% for item in news %}
-      <div class="col-md-4 col-sm-6 mb-4">
-        <div class="post-card card shadow-sm " bis_skin_checked="1">
-         <div class="loader">
-          {% if item.img is NULL %}
-          <a href="{% url 'viewpost' id=item.id %}">
-            <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
-          </a>
-          {% else %}
-          <a href="{% url 'viewpost' id=item.id %}">
-            <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
-          </a>
-          {% endif %}
-         </div>
-         
+      <h1 class="custom-fs-22 custom-fw-700 custom-text-primary mb-4" >Latest News --</h1>
+      {% for item in latest_news %}
+      <div class=" col-lg-3 col-sm-6 mb-4">
+        <div class="post-card card shadow-sm border-0" bis_skin_checked="1" >
+          <div class="loader">
+            {% if item.img is NULL %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% else %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% endif %}
+          </div>
+
           <div class="card-body" bis_skin_checked="1">
             <a href="{% url 'viewpost' id=item.id %}">
-              <h2 class="text-start custom-fw-700 text-dark">{{item.post_title}}</h2>
+              <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{item.post_title}}</h2>
             </a>
-            <p class="card-text">
+            <p class="card-text mb-0">
               {{item.post_body}}
             </p>
-            <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
-              {% if user.is_authenticated or user.is_superuser %}
-              <div class="btn-group" bis_skin_checked="1">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-              </div>
-              {% endif %}
-              <small class="text-muted">{{item.date_added}}</small>
+            <div class="btn-group mb-2" bis_skin_checked="1">
+              <small class="text-muted text-capitalize">Posted by <strong>{{item.author}}
+                </strong>
+                <span class="px-2 py-1 bg-black rounded text-white">{{item.category}}</span></small>
             </div>
+            <small class="text-muted">{{item.date_added}}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <h1 class="custom-fs-22 custom-fw-700 custom-text-primary mb-4" >Popular News --</h1>
+      <div class="row pe-0">
+        <div class="col-lg-6 mb-3">
+          <div class="post-card card shadow-sm border-0 h-100" bis_skin_checked="1" >
+            <div class="loader">
+              {% if pnews.img is NULL %}
+              <a href="{% url 'viewpost' id=pnews.id %}">
+                <img src="https://picsum.photos/500/250" class="card-img-top h-100" style="min-height: 600px; "
+                  alt="{{item.post_title}}">
+              </a>
+              {% else %}
+              <a href="{% url 'viewpost' id=pnews.id %}">
+                <img src="/media/{{pnews.img}}" class="card-img-top h-100" style="min-height: 600px; " alt="{{item.post_title}}">
+              </a>
+              {% endif %}
+            </div>
+            <div class="card-body" bis_skin_checked="1">
+              <a href="{% url 'viewpost' id=pnews.id %}">
+                <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{pnews.post_title}}</h2>
+              </a>
+              <p class="card-text mb-0">
+                {{pnews.post_body}}
+              </p>
+              <div class="btn-group mb-2" bis_skin_checked="1">
+                <small class="text-muted text-capitalize">Posted by <strong>{{pnews.author}}
+                  </strong>
+                  <span class="px-2 py-1 bg-black rounded text-white">{{pnews.category}}</span></small>
+              </div>
+              <small class="text-muted">{{pnews.date_added}}</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 ">
+          <div class="row">
+            {% for item in popular_news %}
+            <div class=" col-sm-6 mb-4 pe-0">
+              <div class="post-card card shadow-sm border-0" bis_skin_checked="1" >
+                <div class="loader">
+                  {% if item.img is NULL %}
+                  <a href="{% url 'viewpost' id=item.id %}">
+                    <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+                  </a>
+                  {% else %}
+                  <a href="{% url 'viewpost' id=item.id %}">
+                    <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+                  </a>
+                  {% endif %}
+                </div>
+
+                <div class="card-body" bis_skin_checked="1">
+                  <a href="{% url 'viewpost' id=item.id %}">
+                    <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{item.post_title}}</h2>
+                  </a>
+                  <p class="card-text mb-0">
+                    {{item.post_body}}
+                  </p>
+                  <div class="btn-group mb-2" bis_skin_checked="1">
+                    <small class="text-muted text-capitalize">Posted by <strong>{{item.author}}
+                      </strong>
+                      <span class="px-2 py-1 bg-black rounded text-white">{{item.category}}</span></small>
+                  </div>
+                  <small class="text-muted">{{item.date_added}}</small>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h1 class="custom-fs-22 custom-fw-700 custom-text-primary mb-4" >World News --</h1>
+      {% for item in world_news %}
+      <div class="col-lg-3 col-sm-6 mb-4">
+        <div class="post-card card shadow-sm border-0" bis_skin_checked="1" >
+          <div class="loader">
+            {% if item.img is NULL %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% else %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% endif %}
+          </div>
+
+          <div class="card-body" bis_skin_checked="1">
+            <a href="{% url 'viewpost' id=item.id %}">
+              <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{item.post_title}}</h2>
+            </a>
+            <p class="card-text mb-0">
+              {{item.post_body}}
+            </p>
+            <div class="btn-group mb-2" bis_skin_checked="1">
+              <small class="text-muted text-capitalize">Posted by <strong>{{item.author}}
+                </strong>
+                <span class="px-2 py-1 bg-black rounded text-white">{{item.category}}</span></small>
+            </div>
+            <small class="text-muted">{{item.date_added}}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <h1 class="custom-fs-22 custom-fw-700 custom-text-primary mb-4" >Business News --</h1>
+      {% for item in business_news %}
+      <div class="col-lg-3 col-sm-6 mb-4">
+        <div class="post-card card shadow-sm border-0" bis_skin_checked="1" >
+          <div class="loader">
+            {% if item.img is NULL %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% else %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% endif %}
+          </div>
+
+          <div class="card-body" bis_skin_checked="1">
+            <a href="{% url 'viewpost' id=item.id %}">
+              <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{item.post_title}}</h2>
+            </a>
+            <p class="card-text mb-0">
+              {{item.post_body}}
+            </p>
+            <div class="btn-group mb-2" bis_skin_checked="1"> <small class="text-muted text-capitalize">Posted by
+                <strong>{{item.author}}</strong>
+                <span class="px-2 py-1 bg-black rounded text-white">{{item.category}}</span></small>
+            </div>
+            <small class="text-muted">{{item.date_added}}</small>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row">
+      <h1 class="custom-fs-22 custom-fw-700 custom-text-primary mb-4" >Sports News --</h1>
+      {% for item in sports_news %}
+      <div class="col-lg-3 col-sm-6 mb-4">
+        <div class="post-card card shadow-sm border-0" bis_skin_checked="1" >
+          <div class="loader">
+            {% if item.img is NULL %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="https://picsum.photos/500/250" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% else %}
+            <a href="{% url 'viewpost' id=item.id %}">
+              <img src="/media/{{item.img}}" class="card-img-top" alt="{{item.post_title}}">
+            </a>
+            {% endif %}
+          </div>
+
+          <div class="card-body" bis_skin_checked="1">
+            <a href="{% url 'viewpost' id=item.id %}">
+              <h2 class="text-start custom-fw-700 custom-fs-25 text-dark">{{item.post_title}}</h2>
+            </a>
+            <p class="card-text mb-0">
+              {{item.post_body}}
+            </p>
+            <small class="text-muted text-capitalize">Posted by <strong>{{item.author}}</strong>
+              <span class="px-2 py-1 bg-black rounded text-white">{{item.category}}</span> </small>
+            <small class="text-muted">{{item.date_added}}</small>
           </div>
         </div>
       </div>

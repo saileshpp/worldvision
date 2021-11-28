@@ -29,9 +29,11 @@
                             <label for="floatingPassword">Password</label>
                         </div>
                         {% if messages %}
+                        {% for message in messages %}
                         <div class="alert alert-warning" role="alert">
-                            A simple warning alert—check it out!
+                            {{message}}
                         </div>
+                        {% endfor %}
                         {% endif %}
                         <button class="w-100 btn btn-lg btn-dark my-5" type="submit">Sign in</button>
                         <p class="mt-5 mb-3 text-muted">© 2017–2021</p>

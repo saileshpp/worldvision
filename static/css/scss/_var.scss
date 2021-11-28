@@ -225,13 +225,12 @@
     cursor: pointer;
 }
 
-.bs{
+.bs {
     box-shadow: 0 6px 5px -4px #aeaeae;
 }
 
-
 .line-1 {
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box !important;
@@ -239,7 +238,7 @@
     -webkit-box-orient: vertical;
 }
 .line-2 {
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box !important;
@@ -247,10 +246,74 @@
     -webkit-box-orient: vertical;
 }
 .line-3 {
-    overflow-y: hidden;
+    overflow: hidden;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box !important;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+@media (max-width: 575px) {
+    :root {
+        --custom-font-: "Montserrat", sans-serif;
+
+        --custom-primary: #b21a29;
+        --custom-secondary: #656673;
+        --custom-black: #1f2332;
+        --custom-dark: #2c3040;
+        --custom-white: #fff;
+        --custom-gray: #837f88;
+        --custom-light: #6a6b71;
+
+        /* Font size from 9 to 39 */
+        --custom-fs-8: 6px;
+        --custom-fs-9: 7px;
+        --custom-fs-10: 8px;
+        --custom-fs-11: 9px;
+        --custom-fs-12: 10px;
+        --custom-fs-13: 11px;
+        --custom-fs-14: 12px;
+        --custom-fs-15: 13px;
+        --custom-fs-16: 14px;
+        --custom-fs-17: 15px;
+        --custom-fs-18: 16px;
+        --custom-fs-19: 17px;
+        --custom-fs-20: 18px;
+        --custom-fs-21: 19px;
+        --custom-fs-22: 20px;
+        --custom-fs-23: 21px;
+        --custom-fs-24: 22px;
+        --custom-fs-25: 23px;
+        --custom-fs-26: 24px;
+        --custom-fs-27: 25px;
+        --custom-fs-28: 26px;
+        --custom-fs-29: 27px;
+        --custom-fs-30: 28px;
+        --custom-fs-31: 29px;
+        --custom-fs-32: 30px;
+        --custom-fs-33: 31px;
+        --custom-fs-34: 32px;
+        --custom-fs-35: 33px;
+        --custom-fs-36: 34px;
+        --custom-fs-37: 35px;
+        --custom-fs-38: 36px;
+        --custom-fs-39: 37px;
+
+        --custom-fs-47: 30.78px;
+        --custom-fs-57: 35.33px;
+
+        --custom-fw-100: 100;
+        --custom-fw-200: 200;
+        --custom-fw-300: 300 !important;
+        --custom-fw-400: 400;
+        --custom-fw-500: 500;
+        --custom-fw-600: 600;
+        --custom-fw-700: 700;
+        --custom-fw-800: 800;
+        --custom-fw-900: 900;
+
+        --custom-transition: all 300ms ease-in-out;
+
+        --box-shadow: 0px 1px 24px 8px rgba(20, 20, 20, 0.08);
+    }
 }
