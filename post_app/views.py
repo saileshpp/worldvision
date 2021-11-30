@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
 from post_app.models import Post
+from worldvision_django import settings
 
 
 def index(request):
@@ -21,7 +22,6 @@ def index(request):
         category='Business').order_by('-date_added')[:4]
     sports_news = Post.objects.filter(
         category='Sports').order_by('-date_added')[:4]
-
     params = {'date': date.today(), 'news': news, 'b_news': b_news,
               'aside': random.sample(list(news), 6)[:6], 'c_news': carousel_news, 'world_news': world_news, 'business_news': business_news, 'sports_news': sports_news,
               'latest_news': news.order_by('-date_added')[:4], 'popular_news': random.sample(list(news), 4), 'pnews': news[random.randint(0, len(news))]}
@@ -30,6 +30,7 @@ def index(request):
 
 
 def signin(request):
+    ip_address = request.META.get('REMOTE_ADDR')
     if request.method == 'GET':
         return render(request, 'signin.html')
     else:
@@ -40,6 +41,11 @@ def signin(request):
         if user is not None:
             login(request, user)
             url = request.GET.get('next')
+            sub = 'Login'
+            msg = f'Dear {request.user.first_name} {request.user.last_name}, did you just login in World Vision from this {ip_address}. If not please change your password. Thank you'
+            email_from = settings.EMAIL_HOST_USER
+            email_to = [request.user.email]
+            send_mail(sub, msg, email_from, email_to)
 
             if url is not None:
                 return redirect(url)
@@ -51,6 +57,7 @@ def signin(request):
             return render(request, 'signin.html')
 
 
+@login_required(login_url='signin')
 def signout(request):
     logout(request)
     return redirect('index')
