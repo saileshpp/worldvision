@@ -41,12 +41,6 @@ def signin(request):
         if user is not None:
             login(request, user)
             url = request.GET.get('next')
-            sub = 'Login'
-            msg = f'Dear {request.user.first_name} {request.user.last_name}, did you just login in World Vision from this {ip_address}. If not please change your password. Thank you'
-            email_from = settings.EMAIL_HOST_USER
-            email_to = [request.user.email]
-            send_mail(sub, msg, email_from, email_to)
-
             if url is not None:
                 return redirect(url)
             else:
@@ -122,7 +116,7 @@ def changepassword(requset):
 def delete(request, id):
     news = Post.objects.get(id=id)
     news.delete()
-    return redirect('mypost')
+    return redirect('myaccount')
 
 
 def catpage(request, slug):
