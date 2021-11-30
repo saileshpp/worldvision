@@ -1,0 +1,1 @@
+web: gunicorn worldvision_django.wsgi
