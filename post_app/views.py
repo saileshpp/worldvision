@@ -30,7 +30,6 @@ def index(request):
 
 
 def signin(request):
-    ip_address = request.META.get('REMOTE_ADDR')
     if request.method == 'GET':
         return render(request, 'signin.html')
     else:
