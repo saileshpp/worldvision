@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-w^e^%l(a__&_yq8p&h(1i0^il7t4p1*jrzj_-&^2qpbzrr=ti$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['worldvisiondjango.herokuapp.com']
 
 
 # Application definition
