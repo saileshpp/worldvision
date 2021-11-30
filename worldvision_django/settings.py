@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
+import dj_database_url
 
 from django.db.models.manager import EmptyManager
 
@@ -145,3 +146,6 @@ EMAIL_HOST_USER = 'decordnepal@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kathmandu@123'
 
 django_heroku.settings(locals())
+
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
