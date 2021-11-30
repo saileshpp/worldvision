@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 from django.db.models.manager import EmptyManager
 
@@ -141,3 +142,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'decordnepal@gmail.com'
 EMAIL_HOST_PASSWORD = 'Kathmandu@123'
+
+django_heroku.settings(locals())
