@@ -14,7 +14,6 @@ from worldvision_django import settings
 
 def index(request):
     news = Post.objects.all()
-    b_news = random.sample(list(news), 4)
     carousel_news = random.sample(list(news), 3)
     world_news = Post.objects.filter(
         category='World').order_by('-date_added')[:4]
@@ -22,7 +21,7 @@ def index(request):
         category='Business').order_by('-date_added')[:4]
     sports_news = Post.objects.filter(
         category='Sports').order_by('-date_added')[:4]
-    params = {'date': date.today(), 'news': news, 'b_news': b_news,
+    params = {'date': date.today(), 'news': news,
               'aside': random.sample(list(news), 6)[:6], 'c_news': carousel_news, 'world_news': world_news, 'business_news': business_news, 'sports_news': sports_news,
               'latest_news': news.order_by('-date_added')[:4], 'popular_news': random.sample(list(news), 4), 'pnews': news[random.randint(0, len(news))]}
 
