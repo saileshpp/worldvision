@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
-from post_app.models import Post
+from post_app.models import Post,Comment
 from worldvision_django import settings
 
 
@@ -83,7 +83,16 @@ def addpost(request):
 def viewpost(request, id):
     item = Post.objects.get(id=id)
     you_may_like_news = random.sample(list(Post.objects.all()[:3]), 2)
-    return render(request, 'viewpost.html', {'item': item, 'you_may_like_news': you_may_like_news})
+    print(item)
+    comments = Comment.objects.filter(post = item)
+
+    if request.method == 'GET':
+        return render(request, 'viewpost.html', {'item': item, 'you_may_like_news': you_may_like_news,'comments':comments})
+    else:
+        comment = request.POST['comment']
+        create = Comment.objects.create(comment=comment,author = request.user, post = item)
+        create.save()
+        return render(request, 'viewpost.html', {'item': item, 'you_may_like_news': you_may_like_news,'comments':comments})
 
 
 @login_required(login_url='signin')
