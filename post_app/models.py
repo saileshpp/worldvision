@@ -14,3 +14,12 @@ class Post(models.Model):
     def __str__(self) -> str:
         return self.post_title
 
+class Comment(models.Model):
+    sn = models.AutoField(primary_key=True)
+    comment = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f'{self.comment[:20]}... By {self.author}'
