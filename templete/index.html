@@ -8,20 +8,7 @@
       <h2 class="d-block d-lg-none text-start text-sm-center py-3 border-top border-bottom custom-text-primary">
         Breaking News
       </h2>
-      {% for news in b_news %}
-      <div class="col-lg-3 col-md-6 breaking_news my-2 my-lg-0">
-        <a href="{% url 'viewpost' id=news.id %}">
-          <div class="row">
-            <div class="col-4 px-1">
-              <img src="{{news.img.url}}" class="img-fluid" alt="">
-            </div>
-            <div class="col-8 px-1">
-              <h2 class="custom-fs-16 text-black line-2">{{news.post_title}}</h2>
-            </div>
-          </div>
-        </a>
-      </div>
-      {% endfor %}
+     
     </div>
   </div>
 </section>
