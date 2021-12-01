@@ -1,0 +1,319 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+    --custom-font-: "Montserrat", sans-serif;
+
+    --custom-primary: #3e8177;
+    --custom-secondary: #0a62f8;
+    --custom-gray: #dbdbdb;
+
+    /* Font size from 9 to 39 */
+    --custom-fs-8: 8px;
+    --custom-fs-9: 9px;
+    --custom-fs-10: 10px;
+    --custom-fs-11: 11px;
+    --custom-fs-12: 12px;
+    --custom-fs-13: 13px;
+    --custom-fs-14: 14px;
+    --custom-fs-15: 15px;
+    --custom-fs-16: 16px;
+    --custom-fs-17: 17px;
+    --custom-fs-18: 18px;
+    --custom-fs-19: 19px;
+    --custom-fs-20: 20px;
+    --custom-fs-21: 21px;
+    --custom-fs-22: 22px;
+    --custom-fs-23: 23px;
+    --custom-fs-24: 24px;
+    --custom-fs-25: 25px;
+    --custom-fs-26: 26px;
+    --custom-fs-27: 27px;
+    --custom-fs-28: 28px;
+    --custom-fs-29: 29px;
+    --custom-fs-30: 30px;
+    --custom-fs-31: 31px;
+    --custom-fs-32: 32px;
+    --custom-fs-33: 33px;
+    --custom-fs-34: 34px;
+    --custom-fs-35: 35px;
+    --custom-fs-36: 36px;
+    --custom-fs-37: 37px;
+    --custom-fs-38: 38px;
+    --custom-fs-39: 39px;
+
+    --custom-fs-47: 47.78px;
+    --custom-fs-57: 57.33px;
+
+    --custom-fw-100: 100;
+    --custom-fw-200: 200;
+    --custom-fw-300: 030;
+    --custom-fw-400: 400;
+    --custom-fw-500: 500;
+    --custom-fw-600: 600;
+    --custom-fw-700: 700;
+    --custom-fw-800: 800;
+    --custom-fw-900: 900;
+
+    --custom-transition: all 300ms ease-in-out;
+
+    --box-shadow: 0px 1px 24px 8px rgba(20, 20, 20, 0.08);
+}
+.custom-font- {
+    font-family: var(--custom-font-) !important;
+}
+.border-top {
+    border-top: 1px solid var(--custom-gray) !important;
+}
+.border-bottom {
+    border-bottom: 1px solid var(--custom-gray) !important;
+}
+.custom-fs-8 {
+    font-size: var(--custom-fs-8);
+}
+.custom-fs-9 {
+    font-size: var(--custom-fs-9);
+}
+.custom-fs-10 {
+    font-size: var(--custom-fs-10);
+}
+.custom-fs-11 {
+    font-size: var(--custom-fs-11);
+}
+.custom-fs-12 {
+    font-size: var(--custom-fs-12);
+}
+.custom-fs-13 {
+    font-size: var(--custom-fs-13);
+}
+.custom-fs-14 {
+    font-size: var(--custom-fs-14);
+}
+.custom-fs-15 {
+    font-size: var(--custom-fs-15);
+}
+.custom-fs-16 {
+    font-size: var(--custom-fs-16);
+}
+.custom-fs-17 {
+    font-size: var(--custom-fs-17);
+}
+.custom-fs-18 {
+    font-size: var(--custom-fs-18);
+}
+.custom-fs-19 {
+    font-size: var(--custom-fs-19);
+}
+.custom-fs-20 {
+    font-size: var(--custom-fs-20);
+}
+.custom-fs-21 {
+    font-size: var(--custom-fs-21);
+}
+.custom-fs-22 {
+    font-size: var(--custom-fs-22);
+}
+.custom-fs-23 {
+    font-size: var(--custom-fs-23);
+}
+.custom-fs-24 {
+    font-size: var(--custom-fs-24);
+}
+.custom-fs-25 {
+    font-size: var(--custom-fs-25);
+}
+.custom-fs-26 {
+    font-size: var(--custom-fs-26);
+}
+.custom-fs-27 {
+    font-size: var(--custom-fs-27);
+}
+.custom-fs-28 {
+    font-size: var(--custom-fs-28);
+}
+.custom-fs-29 {
+    font-size: var(--custom-fs-29);
+}
+.custom-fs-30 {
+    font-size: var(--custom-fs-30);
+}
+.custom-fs-31 {
+    font-size: var(--custom-fs-31);
+}
+.custom-fs-32 {
+    font-size: var(--custom-fs-32);
+}
+.custom-fs-33 {
+    font-size: var(--custom-fs-33);
+}
+.custom-fs-34 {
+    font-size: var(--custom-fs-34);
+}
+.custom-fs-35 {
+    font-size: var(--custom-fs-35);
+}
+.custom-fs-36 {
+    font-size: var(--custom-fs-36);
+}
+.custom-fs-37 {
+    font-size: var(--custom-fs-37);
+}
+.custom-fs-38 {
+    font-size: var(--custom-fs-38);
+}
+.custom-fs-39 {
+    font-size: var(--custom-fs-39);
+}
+.custom-fs-47 {
+    font-size: var(--custom-fs-47);
+}
+.custom-fs-57 {
+    font-size: var(--custom-fs-57);
+}
+
+.custom-fw-100 {
+    font-weight: var(--custom-fw-100) !important;
+}
+.custom-fw-200 {
+    font-weight: var(--custom-fw-200) !important;
+}
+.custom-fw-300 {
+    font-weight: var(--custom-fw-300) !important;
+}
+.custom-fw-400 {
+    font-weight: var(--custom-fw-400) !important;
+}
+.custom-fw-500 {
+    font-weight: var(--custom-fw-500) !important;
+}
+.custom-fw-600 {
+    font-weight: var(--custom-fw-600) !important;
+}
+.custom-fw-700 {
+    font-weight: var(--custom-fw-700) !important;
+}
+.custom-fw-800 {
+    font-weight: var(--custom-fw-800) !important;
+}
+.custom-fw-900 {
+    font-weight: var(--custom-fw-900) !important;
+}
+
+.custom-text-primary {
+    color: var(--custom-primary) !important;
+}
+.custom-text-secondary {
+    color: var(--custom-secondary) !important;
+}
+.custom-text-gray {
+    color: var(--custom-gray) !important;
+}
+
+.custom-bg-primary {
+    background-color: var(--custom-primary) !important;
+}
+.custom-bg-secondary {
+    background-color: var(--custom-secondary) !important;
+}
+.custom-bg-gray {
+    background-color: var(--custom-gray) !important;
+}
+
+.custom-transition {
+    transition: var(--custom-transition) !important;
+}
+
+.custom-cursor-pointer {
+    cursor: pointer;
+}
+
+.bs {
+    box-shadow: 0 6px 5px -4px #aeaeae;
+}
+
+.line-1 {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.line-2 {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.line-3 {
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+@media (max-width: 575px) {
+    :root {
+        --custom-font-: "Montserrat", sans-serif;
+
+        --custom-primary: #b21a29;
+        --custom-secondary: #656673;
+        --custom-black: #1f2332;
+        --custom-dark: #2c3040;
+        --custom-white: #fff;
+        --custom-gray: #837f88;
+        --custom-light: #6a6b71;
+
+        /* Font size from 9 to 39 */
+        --custom-fs-8: 6px;
+        --custom-fs-9: 7px;
+        --custom-fs-10: 8px;
+        --custom-fs-11: 9px;
+        --custom-fs-12: 10px;
+        --custom-fs-13: 11px;
+        --custom-fs-14: 12px;
+        --custom-fs-15: 13px;
+        --custom-fs-16: 14px;
+        --custom-fs-17: 15px;
+        --custom-fs-18: 16px;
+        --custom-fs-19: 17px;
+        --custom-fs-20: 18px;
+        --custom-fs-21: 19px;
+        --custom-fs-22: 20px;
+        --custom-fs-23: 21px;
+        --custom-fs-24: 22px;
+        --custom-fs-25: 23px;
+        --custom-fs-26: 24px;
+        --custom-fs-27: 25px;
+        --custom-fs-28: 26px;
+        --custom-fs-29: 27px;
+        --custom-fs-30: 28px;
+        --custom-fs-31: 29px;
+        --custom-fs-32: 30px;
+        --custom-fs-33: 31px;
+        --custom-fs-34: 32px;
+        --custom-fs-35: 33px;
+        --custom-fs-36: 34px;
+        --custom-fs-37: 35px;
+        --custom-fs-38: 36px;
+        --custom-fs-39: 37px;
+
+        --custom-fs-47: 30.78px;
+        --custom-fs-57: 35.33px;
+
+        --custom-fw-100: 100;
+        --custom-fw-200: 200;
+        --custom-fw-300: 300 !important;
+        --custom-fw-400: 400;
+        --custom-fw-500: 500;
+        --custom-fw-600: 600;
+        --custom-fw-700: 700;
+        --custom-fw-800: 800;
+        --custom-fw-900: 900;
+
+        --custom-transition: all 300ms ease-in-out;
+
+        --box-shadow: 0px 1px 24px 8px rgba(20, 20, 20, 0.08);
+    }
+}

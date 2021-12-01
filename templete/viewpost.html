@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}{{item.post_title}}{% endblock %}
+{% block content %}
+<section class="py-3 ">
+    <div class="container">
+        <h1 class="text-center custom-fs-35 custom-fw-600 text-black text-break mt-4 mb-5">{{item.post_title}}</h1>
+        <div class="post-img loader my-3">
+            <img src="{{item.img.url}}" class="img-fluid" alt="">
+        </div>
+        <div class="d-flex justify-content-center my-4">
+            <div class="bg-black text-white px-3 py-2">
+                {{item.category}}
+            </div>
+        </div>
+        <p class="custom-fs-15 text-center text-capitalize">{{item.author}} | {{item.date_added}}</p>
+        <p class="text-center my-4 text-break">
+            {{item.post_body}}
+        </p>
+        <div class="d-flex justify-content-center my-3 ">
+            <div class="fb-comments" data-href="http://127.0.0.1:8000/viewpost/{{item.id}}" data-width=""
+                data-numposts="5"></div>
+        </div>
+
+        <h2 class="text-center custom-fs-30 custom-fw-600 text-black border-bottom py-4">You may also like</h2>
+        <div class="py-4 row justify-content-center">
+            <div class="col-lg-8">
+                {% for item in you_may_like_news %}
+                <div class="card border-0">
+                    <div class="row w-100 jutify-content center py-4">
+                        <div class="col-sm-4 ">
+                            <div class="loader" style="min-height: 50px !important;"> 
+                                <a href="{% url 'viewpost' id=item.id %}">
+                                    <div class="img-wrap">
+                                        <img src="{{item.img.url}}" alt="" class="img-fluid">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <a href="{% url 'viewpost' id=item.id %}">
+                                <h2 class="custom-fs-30 custom-fw-600 text-black line-1">{{item.post_title}}</h2>
+                            </a>
+                            <p class="custom-fs-12  text-capitalize">{{item.author}} | {{item.date_added}}</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
