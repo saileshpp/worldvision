@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w^e^%l(a__&_yq8p&h(1i0^il7t4p1*jrzj_-&^2qpbzrr=ti$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['worldvisionnp.herokuapp.com']
 
